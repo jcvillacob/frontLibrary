@@ -1,0 +1,76 @@
+.container {
+    margin-top: 20px;
+}
+
+.input-group {
+    z-index: -1;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.author-name {
+    color: rgb(77, 76, 76);
+}
+
+.card-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.card {
+    transition: all 0.3s;
+    /* Agregar transición para suavizar el cambio de tamaño */
+}
+
+.card:hover {
+    transform: scale(1.05);
+    /* Aumentar el tamaño de la tarjeta en un 5% */
+}
+
+.card-img-top {
+    transition: all 0.3s;
+    /* Agregar transición para suavizar el cambio de tamaño */
+    height: 100%;
+    object-fit: cover;
+}
+
+.card:hover .card-img-top {
+    height: 80%;
+    /* Reducir el tamaño vertical de la imagen al 80% */
+}
+
+.card-body {
+    height: 60%;
+    /* Establecer una altura para el cuerpo de la tarjeta */
+    overflow: hidden;
+    /* Ocultar el contenido que exceda la altura establecida */
+}
+
+.card-body p {
+    margin-bottom: 0;
+    /* Eliminar el margen inferior del texto del cuerpo de la tarjeta */
+}
+
+.card:hover .card-title {
+    position: relative;
+    top: -50px;
+    z-index: 999999999;
+}
+
+.sinopsis {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+.red {
+    color: red;
+    margin-top: 5px;
+}
+
+.green {
+    color: green;
+    margin-top: 5px;
+}

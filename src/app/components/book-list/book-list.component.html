@@ -1,0 +1,65 @@
+<div class="container">
+    <div class="row">
+        <!-- Sidebar for Filters -->
+        <div class="col-md-3">
+            <div class="my-4">
+                <h5>Buscar</h5>
+                <div class="input-group">
+                    <input [(ngModel)]="searchKeyword" (ngModelChange)="onFilterChange()" type="text"
+                        class="form-control" placeholder="Buscar por ..." />
+                </div>
+            </div>
+            <div class="my-4">
+                <h5>Filter by Author</h5>
+                <select [(ngModel)]="selectedAuthor" (ngModelChange)="onFilterChange()" class="form-control">
+                    <option value="">Todos</option>
+                    <option *ngFor="let author of authors" [value]="author">
+                        {{ author }}
+                    </option>
+                </select>
+            </div>
+            <div class="my-4">
+                <h5>Filtro por Año</h5>
+                <select [(ngModel)]="selectedYear" (ngModelChange)="onFilterChange()" class="form-control">
+                    <option value="0">Todos</option>
+                    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+                </select>
+            </div>
+            <div class="my-4">
+                <h5>Filtro por Editorial</h5>
+                <select [(ngModel)]="selectedEditorial" (ngModelChange)="onFilterChange()" class="form-control">
+                    <option value="">Todos</option>
+                    <option *ngFor="let editorial of editorials" [value]="editorial">
+                        {{ editorial }}
+                    </option>
+                </select>
+            </div>
+            <!-- Add more filters here -->
+        </div>
+        <!-- Books List -->
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of filteredBooks">
+                    <div class="card h-100">
+                        <a href="#"><img class="card-img-top" [src]="book.coverImage" alt="Book cover" /></a>
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                <a href="#">{{ book.title }}</a>
+                            </h4>
+                            <h5 class="author-name">{{ book.author }}</h5>
+                            <p class="card-text">{{ book.editorial.name }}</p>
+                            <p class="sinopsis">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quidem, praesentium! Omnis,
+                                laudantium. Tempore, possimus velit inventore reprehenderit tenetur hic, consequatur
+                                autem alias reiciendis ex accusamus laboriosam numquam. Architecto, unde voluptatem!</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Año de publicación: {{ book.publicationYear }}</small>
+                            <i class="fa-solid fa-circle"
+                                [ngClass]="{'green': book.available, 'red': !book.available}"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

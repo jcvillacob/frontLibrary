@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -6,24 +6,9 @@ import { Component, HostBinding } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
+  menuActive: boolean = false;
 
-  @HostBinding('class.openNav') isOpenNav = false;
-  @HostBinding('class.openSearch') isOpenSearch = false;
-  isSearchIcon = true;
-
-  toggleNav() {
-    this.isOpenNav = !this.isOpenNav;
-    this.isOpenSearch = false;
-    this.isSearchIcon = true;
-  }
-
-  closeNav() {
-    this.isOpenNav = false;
-  }
-
-  toggleSearch() {
-    this.isOpenSearch = !this.isOpenSearch;
-    this.isOpenNav = false;
-    this.isSearchIcon = !this.isSearchIcon;
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
   }
 }

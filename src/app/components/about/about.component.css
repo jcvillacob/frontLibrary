@@ -1,0 +1,66 @@
+.hero {
+    background-image: url('https://th.bing.com/th/id/OIG.wxrCxOLGjkUDqve4Yd6o?pid=ImgGn');
+    color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top -30px;
+}
+
+.hero h1,
+.hero p {
+    text-shadow: -1px -1px 2px #000000;
+}
+
+.services {
+    margin-top: 50px;
+}
+
+.services i {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+i {
+    color: #120d58;
+}
+
+.our-services {
+    background-color: #120d5823;
+}
+
+
+/* CONTACT SECTION */
+.contact-section {
+    background-color: #f8f9fa;
+}
+
+.contact-heading {
+    color: #141414;
+}
+
+.contact-label {
+    color: #3c4044;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.contact-input {
+    border-radius: 20px;
+}
+
+.contact-button {
+    border-radius: 20px;
+    font-weight: bold;
+    display: flex;
+    margin: auto;
+    margin-top: 15px;
+    justify-content: space-around;
+    width: 7.5rem;
+    background-color: #120d58;
+    border-color: #120d58;
+}
+
+.contact-button i {
+    color: #fff;
+}

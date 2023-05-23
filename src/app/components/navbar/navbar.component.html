@@ -1,19 +1,23 @@
-<nav class="nav">
-    <i class="fas fa-bars navOpenBtn"></i>
-    <a href="#" class="logo">Codinglab</a>
+<nav class="navbar">
+  <div class="logo">
+    <a href="">
+      <img src="https://th.bing.com/th/id/OIG.2_6Nx2W_KyZUpyFKGLqM?pid=ImgGn" alt="" class="img-logo">
+    </a>
+    <a href="">
+      <h1 href="">Lidenbrok</h1>
+    </a>
+  </div>
 
-    <ul class="nav-links">
-        <i class="fas fa-times navCloseBtn"></i>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
+  <div class="menu-container">
+    <ul class="items" [class.active]="menuActive">
+      <li class="nav-item"><a href="home">Home</a></li>
+      <li class="nav-item"><a href="list">Libros</a></li>
+      <li class="nav-item"><a href="services">Servicios</a></li>
+      <li class="nav-item"><a href="about">Sobre nosotros</a></li>
+      <li class="nav-item login"><a href="#">Inicia Sesión</a></li>
+      <!-- <li class="nav-item login"><a href="#">Cerrar Sesión</a></li> -->
     </ul>
-
-    <i class="fas fa-search search-icon" id="searchIcon"></i>
-    <div class="search-box">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" placeholder="Search here...">
-    </div>
+    <i class="fa-solid fa-bars menu-icon" (click)="toggleMenu()" *ngIf="!menuActive"></i>
+    <i class="fa-solid fa-x menu-icon" (click)="toggleMenu()" *ngIf="menuActive"></i>
+  </div>
 </nav>
