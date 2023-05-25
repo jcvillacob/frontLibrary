@@ -14,8 +14,12 @@
       <li class="nav-item"><a href="list">Libros</a></li>
       <li class="nav-item"><a href="services">Servicios</a></li>
       <li class="nav-item"><a href="about">Sobre nosotros</a></li>
-      <li class="nav-item login"><a href="#">Inicia Sesión</a></li>
-      <!-- <li class="nav-item login"><a href="#">Cerrar Sesión</a></li> -->
+      <li class="nav-item cuenta" *ngIf="isAuthenticated"><a href="cuenta">Mi Cuenta</a></li>
+      <li class="nav-item cuenta" *ngIf="isAuthenticated && (userRol === 'admin')">
+        <a href="admin">Admin</a>
+      </li>
+      <li class="nav-item login" *ngIf="!isAuthenticated"><a href="login">Inicia Sesión</a></li>
+      <li class="nav-item login" *ngIf="isAuthenticated" (click)="logout()"><a href="#">Cerrar Sesión</a></li>
     </ul>
     <i class="fa-solid fa-bars menu-icon" (click)="toggleMenu()" *ngIf="!menuActive"></i>
     <i class="fa-solid fa-x menu-icon" (click)="toggleMenu()" *ngIf="menuActive"></i>

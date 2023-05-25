@@ -2,10 +2,6 @@
     margin-top: 20px;
 }
 
-.input-group {
-    z-index: -1;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -17,17 +13,33 @@ a {
 
 .card-footer {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-footer div {
+    display: flex;
     flex-direction: column;
+}
+
+.fa-heart {
+    font-size: 1.5rem;
+}
+
+.heart {
+    color: rgb(197, 30, 30);
+}
+
+.fa-heart:hover {
+    cursor: pointer;
 }
 
 .card {
     transition: all 0.3s;
-    /* Agregar transición para suavizar el cambio de tamaño */
 }
 
 .card:hover {
     transform: scale(1.05);
-    /* Aumentar el tamaño de la tarjeta en un 5% */
 }
 
 .card-img-top {
@@ -37,10 +49,9 @@ a {
     object-fit: cover;
 }
 
-.card:hover .card-img-top {
+/* .card:hover .card-img-top {
     height: 80%;
-    /* Reducir el tamaño vertical de la imagen al 80% */
-}
+} */
 
 .card-body {
     height: 60%;
@@ -52,12 +63,6 @@ a {
 .card-body p {
     margin-bottom: 0;
     /* Eliminar el margen inferior del texto del cuerpo de la tarjeta */
-}
-
-.card:hover .card-title {
-    position: relative;
-    top: -50px;
-    z-index: 999999999;
 }
 
 .sinopsis {

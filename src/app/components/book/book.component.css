@@ -1,0 +1,174 @@
+.row {
+    display: flex;
+    margin-bottom: 50px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.432);
+    padding: 2.5rem 10px;
+    border-radius: 10px;
+}
+
+.cover {
+    max-width: 33%;
+}
+
+img {
+    width: 100%;
+    border-radius: 7px;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.75rem;
+    color: rgb(231, 207, 69);
+    font-size: 1.2rem;
+}
+
+.megusta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    align-items: center;
+}
+
+.fa-heart {
+    font-size: 1.5rem;
+}
+
+.heart {
+    color: rgb(197, 30, 30);
+}
+
+.fa-heart:hover {
+    cursor: pointer;
+}
+
+.disponibilidad {
+    display: flex;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.green {
+    background-color: green;
+    color: aliceblue;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+.red {
+    background-color: rgb(197, 30, 30);
+    color: aliceblue;
+    padding: 10px 25px;
+    border-radius: 10px;
+}
+
+
+.info {
+    max-width: 62%;
+    margin-left: 5%;
+}
+
+.book-subtitulo {
+    margin-top: 1rem;
+}
+
+.subt {
+    font-size: 1.1rem;
+}
+
+.book-author {
+    font-size: 1.5rem;
+    position: relative;
+    right: -60%;
+}
+
+.sinops {
+    margin-bottom: 0.7rem;
+}
+
+.sinopsis {
+    height: 450px;
+    overflow-y: auto;
+    padding-top: 15px;
+    padding-right: 15px;
+}
+
+.noComment {
+    font-size: 45px;
+    margin: 70px 0;
+    margin-left: 25%;
+}
+
+.bookReviews {
+    width: 80%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviewTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewItem {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.userName {
+    font-weight: bold;
+    color: #333;
+}
+
+.userRating {
+    color: #f4c150;
+    margin-left: 10px;
+}
+
+.userComment {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 90%;
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+form .rating {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    font-size: 1.75rem;
+}
+
+.textReview {
+    min-height: 100px;
+    width: 90%;
+    border-radius: 11px;
+    padding: 15px;
+}
+
+button {
+    color: aliceblue;
+    background-color: #080f96;
+    width: 100px;
+    border-radius: 7px;
+    border-width: 0;
+    padding: 5px 15px;
+}

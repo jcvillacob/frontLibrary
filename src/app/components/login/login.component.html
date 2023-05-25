@@ -1,0 +1,33 @@
+<div class="boxer">
+    <div class="box">
+        <h2>{{ isRegistering ? 'Registro' : 'Login' }}</h2>
+        <form (submit)="onSubmit()">
+            <!-- Agregue el siguiente div para mostrar el campo Nombre solo si isRegistering es verdadero -->
+            <div class="inputBox" *ngIf="isRegistering">
+                <input type="text" name="Name" [(ngModel)]="nameValue" placeholder="Name" />
+            </div>
+            <div class="inputBox">
+                <input type="email" name="Username" [(ngModel)]="emailValue" placeholder="Email" />
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" [(ngModel)]="passwordValue"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    placeholder="Password" />
+            </div>
+            <!-- Agregue el siguiente div para mostrar el campo Rol solo si isRegistering es verdadero -->
+            <div class="inputRole" *ngIf="isRegistering">
+                <select [(ngModel)]="roleValue" name="role" class="form-select" required>
+                    <option disabled selected>Seleccione un rol</option>
+                    <option [ngValue]="UserRole.User">Usuario estandar</option>
+                    <option [ngValue]="UserRole.Admin">Admin</option>
+                </select>
+            </div>
+            <input type="submit" name="sign-in" [value]="isRegistering ? 'Regístrate' : 'Inicia Sesión'" />
+        </form>
+        <!-- Agregue el siguiente botón para cambiar entre registrarse e iniciar sesión -->
+        <button (click)="isRegistering = !isRegistering" class="btn-register">
+            {{ isRegistering ? 'Iniciar Sesión' : 'Registrarte' }}
+        </button>
+    </div>
+</div>

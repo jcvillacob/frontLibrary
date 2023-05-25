@@ -1,0 +1,69 @@
+.row {
+    display: flex;
+    margin-bottom: 50px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.432);
+    padding: 2.5rem 10px;
+    border-radius: 10px;
+}
+
+.card-liked-books {
+    display: flex;
+    flex-direction: column;
+}
+
+.liked-books {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    width: 90%;
+    box-shadow: 8px 10px 20px rgba(0, 0, 0, 0.493);
+    margin: 1.5rem;
+    border-radius: 10px;
+    padding-right: 25px;
+}
+
+.card-img-top {
+    width: 150px;
+    margin: 8px;
+    margin-right: 15px;
+    border-radius: 8px;
+}
+
+.info-important {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 1rem;
+    width: auto;
+    padding: 15px;
+    gap: 1rem;
+}
+
+.info-important h5 {
+    margin-bottom: 0.5rem;
+}
+
+.red {
+    background-color: red;
+    color: aliceblue;
+    padding: 10px 15px;
+    border-radius: 7px;
+    text-align: center;
+    width: 13rem;
+}
+
+.green {
+    background-color: green;
+    color: aliceblue;
+    padding: 10px 15px;
+    border-radius: 7px;
+    text-align: center;
+    width: 13rem;
+}
+
+.noComment {
+    font-size: 45px;
+    margin: 70px 0;
+    margin-left: 25%;
+}

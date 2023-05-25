@@ -4,6 +4,10 @@ import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
 import { ServiciosComponent } from './components/servicios/servicios.component';
 import { BookListComponent } from './components/book-list/book-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { CuentaComponent } from './components/cuenta/cuenta.component';
+import { FisicasComponent } from './components/fisicas/fisicas.component';
+import { BookComponent } from './components/book/book.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home", pathMatch: "full" },
@@ -11,6 +15,11 @@ const routes: Routes = [
   { path: "about", component: AboutComponent },
   { path: "services", component: ServiciosComponent },
   { path: "list", component: BookListComponent },
+  { path: "book/:id", component: BookComponent },
+  { path: "login", component: LoginComponent },
+  { path: "cuenta", component: CuentaComponent },
+  { path: "fisicas", component: FisicasComponent },
+  { path: "admin", component: CuentaComponent },
   { path: '**', redirectTo: "/home", pathMatch: "full" },
 ];
 

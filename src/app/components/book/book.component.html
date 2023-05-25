@@ -1,0 +1,118 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="cover" *ngIf="book">
+            <img *ngIf="book.coverImage" [src]="book.coverImage" alt="Imagen del Libro" />
+            <h5 class="mt-3">Calificación:</h5>
+            <div class="rating">
+                <i *ngFor="let r of ' '.repeat(fullStars).split(''); index as i" class="fa-solid fa-star"></i>
+                <i *ngIf="halfStars" class="fa-solid fa-star-half-stroke"></i>
+                <i *ngFor="
+            let r of ' '.repeat(10 - fullStars - halfStars).split('');
+            index as i
+          " class="fa-regular fa-star"></i>
+            </div>
+
+            <div class="megusta">
+                <span *ngIf="!likes.includes(book._id)">Añadir a Favoritos </span>
+                <span *ngIf="likes.includes(book._id)">Eliminar de Favoritos </span>
+                <i class="fa-solid fa-heart heart" *ngIf="likes.includes(book._id)"
+                    (click)="eliminarMeGusta(book._id)"></i>
+                <i class="fa-regular fa-heart" *ngIf="!likes.includes(book._id)" (click)="anadirMeGusta(book._id)"></i>
+            </div>
+            <div class="disponibilidad">
+                <span class="green" *ngIf="book.available">Disponible</span>
+                <span class="red" *ngIf="!book.available">No Disponible</span>
+            </div>
+        </div>
+        <div class="info" *ngIf="book">
+            <h1 class="book-title">{{ book.title }}</h1>
+            <div class="book-subtitulo">
+                <span class="book-author">{{ book.author }}</span>
+            </div>
+            <div class="book-subtitulo">
+                <span class="book-category"><strong class="subt">Categoría: </strong>
+                    {{ book.category.name }}</span>
+            </div>
+            <div class="book-subtitulo">
+                <span class="book-category"><strong class="subt">Año de Publicación: </strong>
+                    {{ book.publicationYear }}</span>
+            </div>
+            <div class="book-subtitulo">
+                <span class="book-category"><strong class="subt">Editorial: </strong>
+                    {{ book.editorial.name }}</span>
+            </div>
+            <div class="book-subtitulo">
+                <span class="book-publisher"><strong class="subt">Publisher: </strong> {{ book.publisher }}</span>
+            </div>
+            <div class="book-subtitulo">
+                <p class="sinops">
+                    <strong class="subt">Sinopsis: </strong>
+                </p>
+                <p class="sinopsis">
+                    "Matar a un ruiseñor" es una novela clásica escrita por Harper Lee y
+                    publicada en 1960. Ambientada en los años 1930, en un pequeño pueblo
+                    ficticio del sur de Estados Unidos, la historia está narrada desde la
+                    perspectiva de Scout Finch, una niña de seis años, y sigue su
+                    crecimiento y su despertar a los problemas de la sociedad.
+                    <br />
+                    <br />
+                    Scout y su hermano mayor Jem viven con su padre, Atticus Finch, un
+                    abogado respetado y justo. La trama se desencadena cuando Atticus es
+                    asignado para defender a Tom Robinson, un hombre negro acusado de
+                    violar a una mujer blanca. A medida que el juicio avanza, Scout y Jem
+                    se ven envueltos en los conflictos raciales y sociales que afligen a
+                    la comunidad.
+                    <br />
+                    <br />
+                    A lo largo de la historia, Scout y Jem entablan amistad con Dill, un
+                    niño curioso que visita el pueblo durante el verano, y se obsesionan
+                    con su misterioso vecino, Boo Radley, quien rara vez sale de su casa.
+                    Mientras Scout y Jem lidian con los prejuicios y la crueldad de
+                    algunos de los habitantes del pueblo, también descubren lecciones
+                    valiosas sobre la empatía, la tolerancia y la importancia de no juzgar
+                    a las personas por su apariencia o circunstancias.
+                    <br />
+                    <br />
+                    "Matar a un ruiseñor" explora temas como el racismo, la injusticia, la
+                    inocencia perdida y la lucha por la justicia en una sociedad dividida.
+                    A través de la mirada ingenua pero perspicaz de Scout, la novela
+                    invita a reflexionar sobre la naturaleza humana y la capacidad de
+                    comprender y aceptar a los demás en un mundo marcado por la
+                    intolerancia.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mostrar los Reviews -->
+    <div *ngIf="reviews.length === 0" class="noComment">Aún no hay Comentarios</div>
+    <div *ngIf="reviews.length !== 0" class="bookReviews">
+        <div *ngFor="let review of reviews" class="reviewItem">
+            <div class="reviewTitle">
+                <span class="userName"> {{ review.user?.name }} </span>
+                <div class="userRating">
+                    <ng-container *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]">
+                        <i class="fa-solid fa-star" *ngIf="i <= review.rating"></i>
+                        <i class="fa-regular fa-star" *ngIf="i > review.rating"></i>
+                    </ng-container>      
+                </div>
+            </div>
+            <span class="userComment"> {{ review.comment }} </span>
+        </div>
+    </div>
+
+    <!-- Formulario para dejar un review -->
+    <div *ngIf="isAuthenticated" class="newReview">
+        <h2>Deja tu review</h2>
+        <form (ngSubmit)="submitReview()">
+            <div class="rating">
+                <i class="fa-star" *ngFor="let star of stars; let i = index" [ngClass]="{
+            'fa-solid': i < newReviewRating,
+            'fa-regular': i >= newReviewRating
+          }" (click)="setRating(i + 1)"></i>
+            </div>
+            <textarea [(ngModel)]="newReviewText" name="reviewText" class="textReview"></textarea>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</div>

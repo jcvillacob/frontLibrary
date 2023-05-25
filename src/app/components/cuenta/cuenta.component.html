@@ -1,0 +1,33 @@
+<div class="container mt-5">
+    <div class="row">
+        <h1>Favoritos</h1>
+        <div class="card-liked-books">
+            <div *ngIf="likedBooks.length === 0" class="noComment">No tienes libros en Favoritos</div>
+            <ng-container *ngFor="let book of likedBooks">
+                <div class="liked-books">
+                    <a [routerLink]="['/book', book._id]"><img class="card-img-top" [src]="book.coverImage" alt="Book cover" /></a>
+                    <div class="info-important">
+                        <h4>{{ book.title }}</h4>
+                        <span><strong>Categoría: </strong>  {{ book.category.name }}</span>
+                    </div>
+                    <div class="info-important">
+                        <span><strong>Año de Publicación: </strong>  {{ book.publicationYear }}</span>
+                        <span><strong>Editorial: </strong>  {{ book.editorial.name }}</span>
+                    </div>
+                    <div class="info-important">
+                        <span><strong>Publisher: </strong>  {{ book.publisher }}</span>
+                        <span [ngClass]="{'red': !book.available, 'green': book.available}">Disponibilidad</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+    <div class="row">
+        <h1>Prestamos Activos</h1>
+        <div *ngIf="loans.length === 0" class="noComment">No tienes Préstamos activos</div>
+    </div>
+    <div class="row">
+        <h1>Historial de Prestamos</h1>
+        <div *ngIf="loans.length === 0" class="noComment">No tienes Hitorial de Préstamos</div>
+    </div>
+</div>

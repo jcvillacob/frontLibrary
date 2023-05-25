@@ -1,7 +1,7 @@
 .navbar {
     margin-left: 0;
     padding-left: 2.5rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
     padding-top: 0.8rem;
     padding-bottom: 0rem;
     display: flex;
@@ -79,17 +79,58 @@ a{
     margin-left: 5px;
 }
 
+
+/* MI CUENTA */
+.cuenta {
+    color: #120d58;
+    position: relative;
+}
+
+.cuenta::before {
+    content: '';
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #120d58;
+    transition: width 0.3s ease;
+}
+
+.cuenta:hover::before {
+    width: 100%;
+}
+
+@media (max-width: 1100px) {
+    .navbar {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .logo {
+        margin: 1rem 0;
+    }
+}
+
+
 @media (max-width: 840px) {
+    .navbar {
+        flex-direction: inherit;
+        margin-top: 0;
+    }
+
     .items {
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 90px;
         left: 0;
         right: 0;
         background-color: #fff;
         padding: 1rem;
         border-radius: 0 0 5px 5px;
         display: none;
+        z-index: 999999;
     }
 
     .items.active {

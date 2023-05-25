@@ -17,6 +17,19 @@ export class BookService {
     return this.http.get<Book[]>(this.apiUrl);
   }
 
+  getBook(id: string): Observable<Book> {
+    return this.http.get<Book>(`${this.apiUrl}/${id}`);
+  }
 
-  // ... otros métodos según sea necesario (p.ej., para crear, actualizar, eliminar libros) ...
+  createBook(post: Book): Observable<Book> {
+    return this.http.post<Book>(this.apiUrl, post);
+  }
+
+  updateBook(id: string ,book: Book): Observable<Book> {
+    return this.http.put<Book>(`${this.apiUrl}/${id}`, book);
+  }
+
+  deleteBook(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
