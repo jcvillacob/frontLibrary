@@ -29,6 +29,7 @@ export class BookComponent {
   stars = Array(10).fill(0);
   isAuthenticated: boolean = false;
   authSubscription: Subscription = new Subscription(); // Inicializa la propiedad con un valor predeterminado
+  loader: boolean = true;
 
   constructor(
     private router: Router,
@@ -67,7 +68,9 @@ export class BookComponent {
             this.fullStars = Math.floor(this.avgRating);  // Extrae la parte entera
             this.halfStars = this.avgRating - this.fullStars >= 0.5 ? 1 : 0;  // Comprueba si hay una parte fraccionaria
           }
-          console.log(this.avgRating);
+          setTimeout(() => {
+            this.loader = false;
+          }, 1000);
         });
       });
     });

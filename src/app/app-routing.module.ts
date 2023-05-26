@@ -8,6 +8,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CuentaComponent } from './components/cuenta/cuenta.component';
 import { FisicasComponent } from './components/fisicas/fisicas.component';
 import { BookComponent } from './components/book/book.component';
+import { RoleGuard } from './services/role.guard';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: "/home", pathMatch: "full" },
@@ -19,7 +21,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "cuenta", component: CuentaComponent },
   { path: "fisicas", component: FisicasComponent },
-  { path: "admin", component: CuentaComponent },
+  { path: "admin", component: AdminComponent, canActivate: [RoleGuard] },
   { path: '**', redirectTo: "/home", pathMatch: "full" },
 ];
 

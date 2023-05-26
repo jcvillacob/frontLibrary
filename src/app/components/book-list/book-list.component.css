@@ -2,6 +2,14 @@
     margin-top: 20px;
 }
 
+/* SPINNER */
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 12rem;
+}
+
+
 a {
     text-decoration: none;
     color: inherit;

@@ -1,0 +1,155 @@
+<div class="conteiner">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-2 mt-5 mr-2 sideb">
+            <div class="">
+                <button class="button-side" (click)="sidebar('prestamos')" [ngClass]="{'active' : side === 'prestamos'}">Préstamos</button>
+            </div>
+            <div class="">
+                <button class="button-side" (click)="sidebar('usuarios')" [ngClass]="{'active' : side === 'usuarios'}">Usuarios</button>
+            </div>
+            <div class="">
+                <button class="button-side" (click)="sidebar('libros')" [ngClass]="{'active' : side === 'libros'}">Libros</button>
+            </div>
+        </div>
+
+        <!-- Sección de Préstamos -->
+        <section [ngClass]="{'noActived' : side !== 'prestamos'}">
+            <div class="botones-prestamo">
+                <!-- <button class="button-prestamo">Nuevo Préstamo</button> -->
+                <button class="button-prestamo"><i class="fa-brands fa-leanpub"></i> Nuevo Préstamo</button>
+            </div>
+            <div class="row">
+                <h1>Prestamos Activos</h1>
+                <div class="card-liked-books">
+                    <div *ngIf="activeLoans.length === 0" class="noComment">No tienes Préstamos activos</div>
+                    <ng-container *ngFor="let loan of activeLoans">
+                        <div class="liked-books">
+                            <a [routerLink]="['/book', loan.book._id]"><img class="card-img-loan" [src]="loan.book.coverImage"
+                                    alt="Book cover" /></a>
+                            <div class="info-important">
+                                <h4>{{ loan.book.title }}</h4>
+                                <span><strong>Fecha del Préstamo: </strong> {{ loan.loanDate | date:'longDate' }}</span>
+                                <span><strong>Fecha del Devolución: </strong> {{ loan.returnDate | date:'longDate' }}</span>
+                            </div>
+                            <div class="info-important">
+                                <span [ngClass]="{'red': !loan.returned, 'green': loan.returned}">Prestado a: {{ loan.user.name }}</span>
+                                <button class="edit-delete edit" (click)="devolverPrestamo(loan)"><i class="fa-solid fa-book"></i>  Confirmar</button>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="row">
+                <h1>Historial de Prestamos</h1>
+                <div class="card-liked-books">
+                    <div *ngIf="historialLoans.length === 0" class="noComment">No tienes Hitorial de Préstamos</div>
+                    <ng-container *ngFor="let loan of historialLoans">
+                        <div class="liked-books">
+                            <a [routerLink]="['/book', loan.book._id]"><img class="card-img-loan" [src]="loan.book.coverImage"
+                                    alt="Book cover" /></a>
+                            <div class="info-important">
+                                <h4>{{ loan.book.title }}</h4>
+                                <span><strong>Fecha del Préstamo: </strong> {{ loan.loanDate | date:'longDate' }}</span>
+                            </div>
+                            <div class="info-important">
+                                <span><strong>Fecha del Devolución: </strong> {{ loan.returnDate | date:'longDate' }}</span>
+                                <span [ngClass]="{'red': !loan.returned, 'green': loan.returned}">{{ loan.user.name }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Usuarios -->
+        <section [ngClass]="{'noActived' : side !== 'usuarios'}">
+            <div class="botones-prestamo">
+                <!-- <button class="button-prestamo">Nuevo Préstamo</button> -->
+                <button class="button-prestamo"><i class="fa-solid fa-user-plus"></i> Nuevo Usuario</button>
+            </div>
+            <div class="row">
+                <h1>Usuarios Verificados</h1>
+                <div class="card-liked-books">
+                    <div *ngIf="verifiedUsers.length === 0" class="noComment">No tienes Usuarios activos</div>
+                    <ng-container *ngFor="let user of verifiedUsers">
+                        <div class="liked-books pb-2">
+                            <div class="info-important">
+                                <h3 class="name">{{ user.name }}</h3>
+                                <span><strong>Correo Electrónico: </strong> {{ user.email }}</span>
+                            </div>
+                            <div class="info-important">
+                                <h4>{{ user.rol }}</h4>
+                                <span [ngClass]="{'red': !user.verified, 'green': user.verified}">Verificado</span>
+                            </div>
+                            <div class="info-important">
+                                <button class="edit-delete edit"><i class="fa-solid fa-user-pen"></i> Editar</button>
+                                <button class="edit-delete delete"><i class="fa-solid fa-eraser"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+
+            <div class="row">
+                <h1>Usuarios no Verificados</h1>
+                <div class="card-liked-books">
+                    <div *ngIf="noVerifiedUsers.length === 0" class="noComment">No tienes Usuarios Sin Verificar</div>
+                    <ng-container *ngFor="let user of noVerifiedUsers">
+                        <div class="liked-books pb-2">
+                            <div class="info-important">
+                                <h3 class="name">{{ user.name }}</h3>
+                                <span><strong>Correo Electrónico: </strong> {{ user.email }}</span>
+                            </div>
+                            <div class="info-important">
+                                <h4>{{ user.rol }}</h4>
+                                <span [ngClass]="{'red': !user.verified, 'green': user.verified}">No Verificado</span>
+                            </div>
+                            <div class="info-important">
+                                <button class="edit-delete edit"><i class="fa-solid fa-user-pen"></i> Editar</button>
+                                <button class="edit-delete delete"><i class="fa-solid fa-eraser"></i> Eliminar</button>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Libros -->
+        <section [ngClass]="{'noActived' : side !== 'libros'}">
+            <div class="botones-prestamo">
+                <!-- <button class="button-prestamo">Nuevo Préstamo</button> -->
+                <button class="button-prestamo"><i class="fa-solid fa-book"></i> Nuevo Libro</button>
+            </div>
+            <div class="row">
+                <h1>Todos los libros</h1>
+                <div class="card-liked-books">
+                    <div *ngIf="books.length === 0" class="noComment">No tienes libros</div>
+                    <ng-container *ngFor="let book of books">
+                        <div class="liked-books">
+                            <div class="botones-editar">
+                                <button class="edit-delete edit"><i class="fa-solid fa-pen"></i></button>
+                                <button class="edit-delete delete"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                            <a [routerLink]="['/book', book._id]"><img class="card-img-top" [src]="book.coverImage"
+                                    alt="Book cover" /></a>
+                            <div class="info-important">
+                                <h4>{{ book.title }}</h4>
+                                <span><strong>Categoría: </strong> {{ book.category.name }}</span>
+                            </div>
+                            <div class="info-important">
+                                <span><strong>Año de Publicación: </strong> {{ book.publicationYear }}</span>
+                                <span><strong>Editorial: </strong> {{ book.editorial.name }}</span>
+                            </div>
+                            <div class="info-important mt-5">
+                                <span><strong>Publisher: </strong> {{ book.publisher }}</span>
+                                <span [ngClass]="{'red': !book.available, 'green': book.available}">Disponibilidad</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

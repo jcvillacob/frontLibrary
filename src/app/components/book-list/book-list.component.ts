@@ -28,8 +28,9 @@ export class BookListComponent implements OnInit {
   likes: string[] = [];
   isAuthenticated: boolean = false;
   authSubscription: Subscription = new Subscription(); // Inicializa la propiedad con un valor predeterminado
+  loader: boolean = true;
 
-  constructor(private bookService: BookService, 
+  constructor(private bookService: BookService,
     private userService: UserService,
     private router: Router,
     private authService: AuthService) { }
@@ -41,13 +42,16 @@ export class BookListComponent implements OnInit {
         this.books = books;
         this.filteredBooks = books;
         this.populateFilters();
-        if (isAuthenticated){
+        if (isAuthenticated) {
           this.userService.getUserMe().subscribe(user => {
-            if(user.likes){
+            if (user.likes) {
               this.likes = user.likes;
             }
           })
         }
+        setTimeout(() => {
+          this.loader = false;
+        }, 1000);
       });
     });
   }
@@ -80,7 +84,7 @@ export class BookListComponent implements OnInit {
       Swal.fire({
         icon: 'warning',
         title: 'Inicia sesión',
-        text: 'Debes iniciar sesión para agregar este libro a tus me gusta.',
+        text: 'Debes iniciar sesión para agregar este libro a tus favoritos.',
         showCancelButton: true,
         confirmButtonText: 'Iniciar Sesión',
         cancelButtonText: 'Cancelar',
@@ -98,9 +102,9 @@ export class BookListComponent implements OnInit {
     }
   }
 
-  eliminarMeGusta(bookId: string){
+  eliminarMeGusta(bookId: string) {
     this.userService.deleteMeGusta(bookId).subscribe(user => {
-      if (user.likes){
+      if (user.likes) {
         this.likes = user.likes;
       }
     });

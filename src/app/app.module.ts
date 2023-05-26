@@ -21,6 +21,8 @@ import { BookService } from './services/book.services';
 import { UserService } from './services/user.service';
 import { BookComponent } from './components/book/book.component';
 import { ReviewService } from './services/review.service';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { ReviewService } from './services/review.service';
     LoginComponent,
     CuentaComponent,
     FisicasComponent,
-    BookComponent
+    BookComponent,
+    SpinnerComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

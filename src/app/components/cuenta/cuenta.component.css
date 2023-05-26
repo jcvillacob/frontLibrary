@@ -11,6 +11,14 @@
     flex-direction: column;
 }
 
+/* SPINNER */
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+}
+
 .liked-books {
     display: flex;
     flex-direction: row;
@@ -28,6 +36,13 @@
     margin: 8px;
     margin-right: 15px;
     border-radius: 8px;
+}
+
+.card-img-loan {
+    margin: 8px;
+    margin-right: 15px;
+    border-radius: 8px;
+    width: 75px;
 }
 
 .info-important {

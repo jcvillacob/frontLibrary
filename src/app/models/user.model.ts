@@ -3,7 +3,7 @@ export interface User {
     name: string;
     email: string;
     password?: string;
-    role: UserRole;
+    rol: UserRole;
     verified?: boolean;
     likes?: string[];
     __v?: number;
@@ -11,5 +11,5 @@ export interface User {
 
 export enum UserRole {
     User = 'user',
-    Admin = 'Admin',
+    Admin = 'admin',
 }

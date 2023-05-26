@@ -1,33 +1,75 @@
 <div class="container mt-5">
+
+    <!-- LISTA DE FAVORITOS -->
     <div class="row">
         <h1>Favoritos</h1>
+        <app-spinner *ngIf="loader" class="loader"></app-spinner>
         <div class="card-liked-books">
-            <div *ngIf="likedBooks.length === 0" class="noComment">No tienes libros en Favoritos</div>
+            <div *ngIf="likedBooks.length === 0 && !loader" class="noComment">No tienes libros en Favoritos</div>
             <ng-container *ngFor="let book of likedBooks">
-                <div class="liked-books">
-                    <a [routerLink]="['/book', book._id]"><img class="card-img-top" [src]="book.coverImage" alt="Book cover" /></a>
+                <div class="liked-books" *ngIf="!loader">
+                    <a [routerLink]="['/book', book._id]"><img class="card-img-top" [src]="book.coverImage"
+                            alt="Book cover" /></a>
                     <div class="info-important">
                         <h4>{{ book.title }}</h4>
-                        <span><strong>Categoría: </strong>  {{ book.category.name }}</span>
+                        <span><strong>Categoría: </strong> {{ book.category.name }}</span>
                     </div>
                     <div class="info-important">
-                        <span><strong>Año de Publicación: </strong>  {{ book.publicationYear }}</span>
-                        <span><strong>Editorial: </strong>  {{ book.editorial.name }}</span>
+                        <span><strong>Año de Publicación: </strong> {{ book.publicationYear }}</span>
+                        <span><strong>Editorial: </strong> {{ book.editorial.name }}</span>
                     </div>
                     <div class="info-important">
-                        <span><strong>Publisher: </strong>  {{ book.publisher }}</span>
+                        <span><strong>Publisher: </strong> {{ book.publisher }}</span>
                         <span [ngClass]="{'red': !book.available, 'green': book.available}">Disponibilidad</span>
                     </div>
                 </div>
             </ng-container>
         </div>
     </div>
+
+    <!-- PRESTAMOS ACTIVOS -->
     <div class="row">
         <h1>Prestamos Activos</h1>
-        <div *ngIf="loans.length === 0" class="noComment">No tienes Préstamos activos</div>
+        <div class="card-liked-books">
+            <app-spinner *ngIf="loader" class="loader"></app-spinner>
+            <div *ngIf="activeLoans.length === 0 && !loader" class="noComment">No tienes Préstamos activos</div>
+            <ng-container *ngFor="let loan of activeLoans">
+                <div class="liked-books" *ngIf="!loader">
+                    <a [routerLink]="['/book', loan.book._id]"><img class="card-img-loan" [src]="loan.book.coverImage"
+                            alt="Book cover" /></a>
+                    <div class="info-important">
+                        <h4>{{ loan.book.title }}</h4>
+                        <span><strong>Fecha del Préstamo: </strong> {{ loan.loanDate | date:'longDate' }}</span>
+                    </div>
+                    <div class="info-important">
+                        <span><strong>Fecha del Devolución: </strong> {{ loan.returnDate | date:'longDate' }}</span>
+                        <span [ngClass]="{'red': !loan.returned, 'green': loan.returned}">No Devuelto</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
     </div>
+
+    <!-- HISTORIAL DE PRESTAMOS -->
     <div class="row">
         <h1>Historial de Prestamos</h1>
-        <div *ngIf="loans.length === 0" class="noComment">No tienes Hitorial de Préstamos</div>
+        <div class="card-liked-books">
+            <app-spinner *ngIf="loader" class="loader"></app-spinner>
+            <div *ngIf="historialLoans.length === 0 && !loader" class="noComment">No tienes Hitorial de Préstamos</div>
+            <ng-container *ngFor="let loan of historialLoans">
+                <div class="liked-books" *ngIf="!loader">
+                    <a [routerLink]="['/book', loan.book._id]"><img class="card-img-loan" [src]="loan.book.coverImage"
+                            alt="Book cover" /></a>
+                    <div class="info-important">
+                        <h4>{{ loan.book.title }}</h4>
+                        <span><strong>Fecha del Préstamo: </strong> {{ loan.loanDate | date:'longDate' }}</span>
+                    </div>
+                    <div class="info-important">
+                        <span><strong>Fecha del Devolución: </strong> {{ loan.returnDate | date:'longDate' }}</span>
+                        <span [ngClass]="{'red': !loan.returned, 'green': loan.returned}">Devuelto</span>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
     </div>
 </div>

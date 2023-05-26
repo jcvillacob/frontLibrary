@@ -17,9 +17,12 @@ export class CuentaComponent implements OnInit {
   likes: string[] = [];
   books: Book[] = [];
   loans: Loan[] = [];
+  activeLoans: Loan[] = [];
+  historialLoans: Loan[] = [];
   likedBooks: Book[] = [];
   isAuthenticated: boolean = false;
   authSubscription: Subscription = new Subscription(); // Inicializa la propiedad con un valor predeterminado
+  loader: boolean = true;
 
   constructor(private bookService: BookService,
     private userService: UserService,
@@ -33,7 +36,6 @@ export class CuentaComponent implements OnInit {
       this.isAuthenticated = isAuthenticated;
       this.bookService.getBooks().subscribe(books => {
         this.books = books;
-        this.likedBooks = books;
         if (isAuthenticated) {
           this.userService.getUserMe().subscribe(user => {
             if (user.likes) {
@@ -41,10 +43,16 @@ export class CuentaComponent implements OnInit {
               this.likedBooks = this.books.filter(book => this.likes.includes(book._id));
               this.loanService.getSelfLoans().subscribe(loans => {
                 this.loans = loans;
-                console.log(loans);
+                this.activeLoans = this.loans.filter(loan => !loan.returned);
+                this.historialLoans = this.loans.filter(loan => loan.returned);
+                setTimeout(() => {
+                  this.loader = false;
+                }, 800);
               });
             }
           })
+        } else {
+          this.router.navigate(['/']);
         }
       });
     });

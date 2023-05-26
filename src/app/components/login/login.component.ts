@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.isRegistering){
-      const nuevoUsuario: User = {name:this.nameValue, email: this.emailValue, password: this.passwordValue, role: this.roleValue };
+      const nuevoUsuario: User = {name:this.nameValue, email: this.emailValue, password: this.passwordValue, rol: this.roleValue };
       this.userService.createUser(nuevoUsuario).subscribe(usuario => {
         Swal.fire({
           icon: 'success',

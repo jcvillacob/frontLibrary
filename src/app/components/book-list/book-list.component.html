@@ -47,7 +47,8 @@
         </div>
         <!-- Books List -->
         <div class="col-md-9">
-            <div class="row">
+            <app-spinner *ngIf="loader" class="loader"></app-spinner>
+            <div class="row" *ngIf="!loader">
                 <div class="col-lg-4 col-md-6 mb-4" *ngFor="let book of filteredBooks">
                     <div class="card h-100">
                         <a [routerLink]="['/book', book._id]"><img class="card-img-top" [src]="book.coverImage" alt="Book cover" /></a>

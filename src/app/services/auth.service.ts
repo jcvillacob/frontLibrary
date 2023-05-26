@@ -46,7 +46,6 @@ export class AuthService {
         const expiration = decodedToken.exp * 1000;
 
         ///////////////////////////////////////
-        console.log(this.token);
         const expirationDate = new Date(expiration);
         console.log('Expiration Date:', expirationDate);
         /////////////////////////////////////////
@@ -65,13 +64,15 @@ export class AuthService {
       return true;
     }
     const currentTime = new Date().getTime();
-    const expired = currentTime >= Number(expiration);
-    if (expired){
+    const expirationTime = new Date(expiration).getTime();
+    const expired = currentTime >= expirationTime;
+    if (expired) {
       localStorage.removeItem('token');
       localStorage.removeItem('token_expiration');
     }
     return expired;
   }
+
 
   logout(): void {
     this.token = '';

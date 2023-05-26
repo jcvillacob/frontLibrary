@@ -6,7 +6,7 @@ export interface Loan {
     book: Book;
     user: User;
     loanDate: string;
-    returnDate: User;
+    returnDate: string;
     returned: number;
     __v?: number;
 }

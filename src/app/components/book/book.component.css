@@ -6,6 +6,14 @@
     border-radius: 10px;
 }
 
+/* SPINNER */
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+}
+
 .cover {
     max-width: 33%;
 }
